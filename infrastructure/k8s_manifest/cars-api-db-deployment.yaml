@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - name: db
+        image: thcqueirozacr.azurecr.io/cars-api-db:latest
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-db-secret
+              key: password
+        - name: MYSQL_DATABASE
+          value: "nodejs_rest_api"
+        ports:
+        - containerPort: 3306

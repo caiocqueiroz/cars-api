@@ -1,0 +1,27 @@
+FROM node:14 
+
+WORKDIR /usr/src/app
+
+# Copie o pacote e trave os arquivos JSON
+COPY package*.json ./
+
+# Instale as dependências do projeto
+RUN npm install
+
+# Copie os arquivos do projeto
+COPY . .
+
+# Instale o cliente MySQL
+RUN apt-get update && apt-get install -y default-mysql-client
+
+# Copie o script de espera
+COPY wait-for-db.sh /usr/wait-for-db.sh
+
+# Torne o script de espera executável
+RUN chmod +x /usr/wait-for-db.sh
+
+# Expor a porta 3000
+EXPOSE 3000 
+
+# Modifique o comando para usar o script de espera antes de iniciar a aplicação Node.js
+CMD ["/usr/wait-for-db.sh", "node", "index.js"]

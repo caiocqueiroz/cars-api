@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+
+  db:
+    build: 
+      context: .
+      dockerfile: db.Dockerfile
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: D1g1perfil$
+      MYSQL_DATABASE: nodejs_rest_api
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  app:
+    build: 
+      context: .
+      dockerfile: app.Dockerfile
+    ports:
+    - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=D1g1perfil$
+      - DB_NAME=nodejs_rest_api
+      - DB_PORT=3306
+volumes:
+  mysql-data:

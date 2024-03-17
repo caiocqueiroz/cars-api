@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS nodejs_rest_api;
+USE nodejs_rest_api;
+
+CREATE TABLE cars (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    model VARCHAR(255) NOT NULL,
+    brand VARCHAR(255) NOT NULL,
+    color VARCHAR(255) NOT NULL
+);

@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        image: thcqueirozacr.azurecr.io/cars-api:latest
+        ports:
+        - containerPort: 3000
+        env: 
+        - name: DB_HOST
+          value: db-service
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-db-secret
+              key: password
+        - name: DB_NAME
+          value: "nodejs_rest_api"
+        - name: DB_PORT 
+          value: "3306"
+        volumeMounts:
+        - name: db-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: db-storage
+        persistentVolumeClaim:
+          claimName: db-pvc
+
+

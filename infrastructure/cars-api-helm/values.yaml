@@ -1,0 +1,15 @@
+api:
+  name: cars-api
+  image: thcqueirozacr.azurecr.io/cars-api:latest
+  port: 3000
+  env:
+    DB_HOST: db-service
+    DB_USER: root
+    DB_NAME: nodejs_rest_api
+    DB_PORT: 3306
+
+db:
+  name: cars-api-db
+  image: thcqueirozacr.azurecr.io/cars-api-db:latest
+  port: 3306
+  secretName: mysql-db-secret

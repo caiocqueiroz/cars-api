@@ -1,0 +1,50 @@
+*.tfvars
+# Arquivos de Estado do Terraform
+*.tfstate
+*.tfstate.*
+
+# Arquivos de Log
+crash.log
+crash.*.log
+
+# Arquivos de Configuração Locais do Terraform
+.terraform
+terraform.rc
+terraform.tfvars
+terraform.tfvars.json
+*.tfvars
+*.tfvars.json
+
+# Arquivos de backup gerados durante a operação terraform apply e terraform plan
+*.backup
+
+# Arquivos de override
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Diretórios que podem conter arquivos sensíveis
+secrets/
+credentials/
+
+# Ignorar arquivos que podem conter informações confidenciais
+*.pem
+*.key
+*.cert
+
+# Excluir diretórios que podem conter binários ou arquivos grandes não relacionados ao código
+bin/
+vendor/
+
+# Arquivos gerados pela IDE ou editores
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*.bak
+*.orig
+.DS_Store
