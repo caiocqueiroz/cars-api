@@ -43,3 +43,5 @@ Como engenheiro de DevOps, preciso implantar uma API escalável com banco de dad
 - After everything is running locally i've started to build the terraform infrastructure. i've create a principal in Azure so terraform can manage the resources. I've create a resource group to hold cars-api resources and a k8s cluster in AKS, cluster have 2 nodes with auto scaling enable, it is using kubenet profile, i considered not needed to have a more complex network config to address what the exercise requested, but if i would go this route i would configure Azure CNI with VPC + public and private subnets and a natgateway.  
 - I've also created a ACR for this setupe and used the principal of AKS to allow it to access ACR.
 - I've created some yaml manifest to test in the cluster the deployments, after everything worked i've created the templates and values in helm chart and installed it in the cluster to test.
+
+Considering the EPIC, i've completed the features 1 to 4. i did not had time to create a CI/CD or GITOPS or monitoring tools.
