@@ -24,7 +24,7 @@ services:
     environment:
       - DB_HOST=db
       - DB_USER=root
-      - DB_PASSWORD=D1g1perfil$
+      - DB_PASSWORD=
       - DB_NAME=nodejs_rest_api
       - DB_PORT=3306
 volumes:
